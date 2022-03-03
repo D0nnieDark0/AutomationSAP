@@ -30,12 +30,12 @@ class Sharepoint():
         os.chdir(PATH)
 
     def bt_sim(self):
-        self.clicar = self.driver.find_element_by_id("idSIButton9")
+        self.clicar = self.driver.find_element(By.ID, "idSIButton9")
         self.clicar.click()
         time.sleep(10)
 
     def login(self, username, password):
-        self.user = self.driver.find_element_by_id("okta-signin-username")
+        self.user = self.driver.find_element(By.ID, "okta-signin-username")
         self.user.send_keys(username)
         self.senha = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, "okta-signin-password")))
         self.senha.send_keys(password)
@@ -45,38 +45,38 @@ class Sharepoint():
         self.bt_sim()
 
     def login_microsoft(self, email):
-        self.micro = self.driver.find_element_by_name("loginfmt")
+        self.micro = self.driver.find_element(By.NAME, "loginfmt")
         self.micro.send_keys(email)
         self.micro.send_keys(Keys.RETURN)
         time.sleep(10)
 
     def novo_form(self):
-        self.novo = self.driver.find_element_by_name("Novo")
+        self.novo = self.driver.find_element(By.NAME, "Novo")
         self.novo.click()
         time.sleep(5)
 
     def salvar_form(self):
-        self.salvar = self.driver.find_element_by_name("Salvar")
+        self.salvar = self.driver.find_element(By.NAME, "Salvar")
         self.salvar.click()
 
     def input_purchase(self, compra):
-        self.compra = self.driver.find_elements_by_tag_name("input")
+        self.compra = self.driver.find_element(By.TAG_NAME, "input")
         self.compra[3].send_keys(compra)
 
     def input_criado(self, criado):
-        self.criado = self.driver.find_elements_by_tag_name("input")
+        self.criado = self.driver.find_element(By.TAG_NAME, "input")
         self.criado[4].send_keys(criado)
 
     def input_conteudo(self, conteudo):
-        self.conteudo = self.driver.find_elements_by_tag_name("input")
+        self.conteudo = self.driver.find_element(By.TAG_NAME, "input")
         self.conteudo[5].send_keys(conteudo)
 
     def input_quantidade(self, quantidade):
-        self.quantidade = self.driver.find_elements_by_tag_name("input")
+        self.quantidade = self.driver.find_element(By.TAG_NAME, "input")
         self.quantidade[6].send_keys(quantidade)
 
     def input_valor(self, valor):
-        self.valor = self.driver.find_elements_by_tag_name("input")
+        self.valor = self.driver.find_element(By.TAG_NAME, "input")
         self.valor[7].send_keys(valor)
 
     def open_excel(self):
