@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
 import win32com.client as win32
 import time
 
@@ -34,14 +35,14 @@ class Navigator():
         self.driver.quit()
 
     def find_element(self, field):
-        return self.driver.find_element_by_id(field)
+        return self.drive.find_element(By.ID, field)
         
     def find_fill_id(self, field, text):
-        self.driver.find_element_by_id(field).send_keys(text)
-        return self.driver.find_element_by_id(field)
+        self.driver.find_element(By.ID, field).send_keys(text)
+        return self.driver.find_element(By.ID, field)
 
     def find_bt_id(self, field, tempo):
-        self.driver.find_element_by_id(field).click()
+        self.driver.find_element(By.ID, field).click()
         time.sleep(tempo)
 
     def command(self, tecla, tempo):
@@ -59,10 +60,10 @@ class Navigator():
         self.main_window = self.driver.current_window_handle
         #Seleciona iFrame aonde fica o campo para digitar a transação
         try:
-            self.iframeSAP = self.driver.find_element_by_id(iframe)
+            self.iframeSAP = self.driver.find_element(By.ID, iframe)
         except NoSuchElementException:
             print("Elemento não encontrado")
-        self.iframeSAP = self.driver.find_element_by_id(iframe)
+        self.iframeSAP = self.driver.find_element(By.ID, iframe)
         self.driver.switch_to.frame(self.iframeSAP)
         time.sleep(15)
 
@@ -71,10 +72,10 @@ class Navigator():
         self.driver.switch_to.window(self.transition_window)
         #Seleciona iFrame aonde fica o campo para digitar a transação
         try:
-            self.iframeSAP = self.driver.find_element_by_id(iframe)
+            self.iframeSAP = self.driver.find_element(By.ID, iframe)
         except NoSuchElementException:
             print("Elemento não encontrado")
-        self.iframeSAP = self.driver.find_element_by_id(iframe)
+        self.iframeSAP = self.driver.find_element(By.ID, iframe)
         self.driver.switch_to.frame(self.iframeSAP)
         time.sleep(15)
 
