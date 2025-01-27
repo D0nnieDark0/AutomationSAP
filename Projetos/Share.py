@@ -19,7 +19,7 @@ class Sharepoint():
 
     def __init__(self):
         self.driver = webdriver.Chrome()
-        self.driver.get("https://planinternational.sharepoint.com/sites/brazilit/Lists/FromSap/AllItems.aspx?origin=createList")
+        self.driver.get("SITE")
         self.driver.maximize_window()
         self.xl = win32.gencache.EnsureDispatch("Excel.Application")
         self.xl.Visible = False
